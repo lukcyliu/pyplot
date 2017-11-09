@@ -2,10 +2,14 @@
 import  matplotlib.pyplot as plt
 import pandas as pd
 
-dire = "C:/Users/lukcy/Desktop/1013实时后验打包/数据/1107仿真测试/"
-resultFile = "8.28result覆盖Vccq减去漂移权重为0镂空2450到2590.csv"
-resultFile2 = "8.28result不覆盖Vccq漂移权重0.75镂空2450到2590.csv"
-refrenceFile = "8.28.csv"
+dire = "C:/Users/lukcy/Desktop/1013实时后验打包/数据/树莓派跑车数据/1109Turing算法大屯路跑车/"
+resultFile = "离线resultTurning.csv"
+resultFile2 = "离线resultMahony.csv"
+refrenceFile = "1108大屯路输入.csv"
+# dire = "C:/Users/lukcy/Desktop/1013实时后验打包/数据/1107仿真测试/"
+# resultFile = "8.28result覆盖Vccq减去漂移权重为0镂空2450到2590.csv"
+# resultFile2 = "8.28result不覆盖Vccq漂移权重0.75镂空2450到2590.csv"
+# refrenceFile = "8.28.csv"
 
 res = pd.read_csv(open(dire + resultFile))
 ref = pd.read_csv(open(dire + refrenceFile))
