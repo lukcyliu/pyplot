@@ -26,6 +26,7 @@ with open(dire + offlinPath,'r') as f:
             else:
                 if  (float(s[12]) == 0 ):
                     if  float(s[13]) == 0:
+
                         if cnt < 12 :
                             # 原数据有时间戳
                             # sout = s[1]+","+ s[2] +","+ s[3] +","+ s[4] +","+ s[5] +","+ s[6] +","+ s[7] +","+ s[8] +","+ s[9] \
