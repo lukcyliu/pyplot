@@ -8,24 +8,25 @@ from  numpy import  *
 # resultFile2 = "离线resultMahony.csv"
 # refrenceFile = "1108大屯路输入.csv"
 dire = "C:/Users/lukcy/Desktop/1013实时后验打包/数据/1107仿真测试/"
-resultFileTurning = "8.28离线结果TurningYaw.csv"
-resultFileMahony = "8.28离线结果mahonyYaw.csv"
-resultFilGPSyaw = "8.28离线结果GPSyaw.csv"
+resultFileTurning = "8.28离线结果Turning.csv"
+resultFileMahony = "8.28离线结果mahony.csv"
+resultFilGPSyaw = "8.28离线结果Mod.csv"
 refrenceFile = "8.28.csv"
-refrenceFileFull = "8.28滑动滤波输入.csv"
+# refrenceFileFull = "8.28滑动滤波输入.csv"
 
 res = pd.read_csv(open(dire + resultFileTurning))
 ref = pd.read_csv(open(dire + refrenceFile))
-refFull = pd.read_csv(open(dire + refrenceFileFull))
+# refFull = pd.read_csv(open(dire + refrenceFileFull))
 res2 = pd.read_csv(open(dire + resultFileMahony))
 res3 = pd.read_csv(open(dire + resultFilGPSyaw))
 refLoc = pd.DataFrame(ref.ix[:,[14,15,19]])
-refLocFull = pd.DataFrame(refFull.ix[:,[14,15,19]])
-diffE = []
-diffL = []
+# refLocFull = pd.DataFrame(refFull.ix[:,[14,15,19]])
+# diffE = []
+# diffL = []
 print(refLoc.shape)
 for i in range(len(refLoc)):
     if refLoc.ix[i,2] == 0:
+        print(i,res3.ix[i,34])
         refLoc.drop(i,axis=0,inplace=True)
 print(refLoc.shape)
 
