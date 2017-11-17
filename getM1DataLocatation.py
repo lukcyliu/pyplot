@@ -5,7 +5,7 @@ nmeaFile1 = "BDSView_nmea1一段.txt"
 nmeaFile2 = "BDSView_nmea1.txt"
 AutoInsFile = "1115AutoINS实时跑车结果.csv"
 gpsFile = "1115大屯路输入.csv"
-saveFile = "1115北斗nmea解析数据.csv"
+saveFile = "1115北斗nmea解析数据1.csv"
 
 AutoINS = pd.read_csv(open(dire + AutoInsFile))
 gps = pd.read_csv(open(dire+gpsFile))
@@ -23,25 +23,34 @@ with open(dire + nmeaFile1 , 'r') as f:
             fout.write(title)
             for line in f:
                 s = line.split(',')
-                if '$GPGGA' in s:
+                if '$GNRMC' in s:
                     E = float(s[s.index('E')-1])
                     L = float(s[s.index('N')-1])
+                    V = float(s[s.index('E')+1])
+                    if s[s.index('E')+2] == '':
+                        s[s.index('E') + 2] = 0
+                    Yaw = float(s[s.index('E')+2])
                     E = int(E / 100) + E % 100 / 60
                     L = int(L / 100) + L % 100 / 60
                     if E < 117 and L < 50:
-                        out =str(E) + "," + str(L) + "\n"
+                        out =str(E) + "," + str(L) + ","+ str(V) + "," + str(Yaw) + "\n"
+                        print(out)
                         traE.append(E)
                         traL.append(L)
                     fout.write(out)
             for line2 in f2:
                 s = line2.split(',')
-                if '$GPGGA' in s:
+                if '$GNRMC' in s:
                     E = float(s[s.index('E') - 1])
                     L = float(s[s.index('N') - 1])
+                    V = float(s[s.index('E') + 1])
+                    if s[s.index('E')+2] == '':
+                        s[s.index('E') + 2] = 0
+                    Yaw = float(s[s.index('E')+2])
                     E = int(E / 100) + E % 100 / 60
                     L = int(L / 100) + L % 100 / 60
                     if E < 117 and L < 50:
-                        out = str(E) + "," + str(L) + "\n"
+                        out = str(E) + "," + str(L) + ","+ str(V) +  "," + str(Yaw) + "\n"
                         traE.append(E)
                         traL.append(L)
                     fout.write(out)
